@@ -1,0 +1,45 @@
+<div class="auth-page">
+    <div class="container page">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <h1 class="text-xs-center">Sign in</h1>
+                <p class="text-xs-center">
+                    <a class="auth-link" routerLink="/login" appHighLight>Need an account?</a>
+                </p>
+                <form [formGroup]="signInForm" (ngSubmit)="submit()">
+                    <fieldset class="form-group">
+                        <input class="form-control form-control-lg" type="text" placeholder="Email" formControlName="email">
+                        <div class="alert alert-danger"
+                        *ngIf="signInForm.get('email')?.dirty && signInForm.get('email')?.invalid">
+                        <span *ngIf="signInForm.get('email')?.errors?.['required']">
+                          Field is required
+                        </span>
+                        <span *ngIf="signInForm.get('email')?.invalid"> 
+                          Please enter a correct email.
+                        </span>
+                      </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input class="form-control form-control-lg" type="password" placeholder="Password" formControlName="token">
+                        <div class="alert alert-danger" 
+                        *ngIf="signInForm.get('token')?.dirty && signInForm.get('token')?.invalid">
+                          <span *ngIf="signInForm.get('token')?.errors?.['required']">
+                            Field is required
+                          </span>
+                          <span *ngIf="signInForm.get('token')?.errors?.['minlength']">
+                            Field length should be at least:
+                              {{signInForm.get('token')?.errors?.['minlength'].requiredLength}}.
+                          </span>
+                        </div>
+                    </fieldset>
+                    <div class="alert">{{auth.formMessage}}</div>
+                    <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="signInForm.invalid">
+                        Sign in
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

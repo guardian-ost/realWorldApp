@@ -1,0 +1,28 @@
+.tag-list{
+    display: flex;
+    gap: 15px;
+}
+
+.article-preview .preview-link p{
+    font-size: 20px;
+    color: black;
+}
+
+.article-meta .info .author{
+    font-size: 24px;
+}
+
+.article-meta .info .date{
+    color: black;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.4rem;
+}
+
+.article-preview .preview-link span {
+    color: black;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.4rem;
+    cursor: pointer;
+}

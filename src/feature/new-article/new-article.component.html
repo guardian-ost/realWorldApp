@@ -1,0 +1,65 @@
+<div class="editor-page">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-10 offset-md-1 col-xs-12">
+        <form [formGroup]="editorForm" (ngSubmit)="publish()">
+          <fieldset>
+            <fieldset class="form-group">
+              <input type="text" class="form-control form-control-lg" placeholder="Article Title"
+                formControlName="title">
+              <div class="alert alert-danger"
+                *ngIf="editorForm.get('title')?.dirty && editorForm.get('title')?.invalid">
+                <span *ngIf="editorForm.get('title')?.errors?.['required']">
+                  Field is required
+                </span>
+                <span *ngIf="editorForm.get('title')?.errors?.['minlength']">
+                  Field length should be at least:
+                  {{editorForm.get('title')?.errors?.['minlength'].requiredLength}}.
+                </span>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" class="form-control" placeholder="What's this article about?"
+                formControlName="description">
+              <div class="alert alert-danger"
+                *ngIf="editorForm.get('description')?.dirty && editorForm.get('description')?.invalid">
+                <span *ngIf="editorForm.get('description')?.errors?.['required']">
+                  Field is required
+                </span>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <textarea class="form-control" rows="8" placeholder="Write your article (in markdown)"
+                formControlName="article"></textarea>
+              <div class="alert alert-danger"
+                *ngIf="editorForm.get('article')?.dirty && editorForm.get('article')?.invalid">
+                <span *ngIf="editorForm.get('article')?.errors?.['required']">
+                  Field is required
+                </span>
+                <span *ngIf="editorForm.get('article')?.errors?.['minlength']">
+                  Field length should be at least:
+                  {{editorForm.get('article')?.errors?.['minlength'].requiredLength}}.
+                </span>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" class="form-control" placeholder="Enter tags" formControlName="tags">
+              <div class="tag-list"></div>
+              <div class="alert alert-danger"
+                *ngIf="editorForm.get('tags')?.dirty && editorForm.get('tags')?.invalid">
+                <span *ngIf="editorForm.get('tags')?.errors?.['required']">
+                  Field is required
+                </span>
+              </div>
+            </fieldset>
+            <button class="btn btn-lg pull-xs-right btn-primary" type="button" [disabled]="editorForm.invalid">
+              Publish Article
+            </button>
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

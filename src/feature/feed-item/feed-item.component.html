@@ -1,0 +1,21 @@
+<div class="article-preview">
+    <div class="article-meta">
+        <a href="#"><img src="{{article.author.image}}"/></a>
+        <div class="info">
+            <a href="" class="author">{{article.author.username}}</a>
+            <span class="date">{{article.createdAt| date:'medium'}}</span>
+        </div>
+        <button class="btn btn-outline-primary btn-sm pull-xs-right">
+            <i class="ion-heart"></i> {{article.favoritesCount}}
+        </button>
+    </div>
+    <a class="preview-link">
+        <h1>{{article.title | truncate}}</h1>
+        <p appHighLight>{{article.description}}</p>
+        <span>Read more...</span>
+        <ul class="tag-list">
+            <app-tag *ngFor ="let tag of article.tagList" title={{tag}}></app-tag>
+        </ul>
+    </a>
+
+</div>

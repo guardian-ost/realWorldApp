@@ -1,0 +1,11 @@
+
+    <div class="sidebar">
+        <p>Popular Tags</p>
+        <div class="tag-list">
+            <span *ngFor="let title of titles">
+                <app-tag title={{title}} (click)="sendSelectTag(title)">
+                </app-tag>
+            </span>
+        </div>
+    </div>
+
